@@ -104,10 +104,14 @@ function findCourseOption(e) {
   selectOptionCourse = e.target.options[i].text;
 }
 function clearLs() {
-  //remove studentsList from Ls
-  localStorage.removeItem("studentsList");
-  //refresh page
-  location.reload();
+  //show alert ta continue
+  let validation = confirmValidation()
+  if (validation == true) {
+    //remove studentsList from Ls
+    localStorage.removeItem("studentsList");
+    //refresh page
+    location.reload();
+  }
 }
 
 //check Ls has data or no if yes send data to showLsData from showData file
@@ -117,5 +121,15 @@ function getData() {
     students = data;
     showLsData(students);
   }
+  
+}
 
+// show confrim validation
+function confirmValidation(){
+  let validation = confirm("Are you sure about doing this ?")
+  //if user click on ok 
+  if (validation == true) {
+    return true
+  }//else
+  return false
 }
