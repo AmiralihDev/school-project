@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>School</title>
+  <link rel="stylesheet" href="src/css/style.css">
+</head>
+
+<body>
+  <button id="clearStudents">clear students</button>
+  <div id="container">
+    <section id="addStudent">
+      <input placeholder="first name" type="text" id="firstName">
+      <input placeholder="last name" type="text" id="lastName">
+      <button id="add">add student</button>
+    </section>
+    <section id="addScore">
+      <select id="student">
+        <option value="">set student</option>
+      </select>
+      <select id="course">
+        <option value="">set course</option>
+        <option value="">html</option>
+        <option value="">css</option>
+        <option value="">js</option>
+      </select>
+      <input placeholder="set score" id="score" type="number">
+      <button id="set">set</button>
+    </section>
+    <section id="studentResult">
+      <div id="class"></div>
+    </section>
+  </div>
+
+  <script type="module" src="src/js/showData.js"></script>
+  <script type="module" src="./src/js/script.js"></script>
+</body>
+
+</html>

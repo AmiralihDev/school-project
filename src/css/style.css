@@ -1,0 +1,49 @@
+body {
+  font-family: tahoma;
+}
+#container {
+  margin: 100px auto;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#addScore {
+  margin-top: 20px;
+}
+select {
+  width: 90px;
+}
+button {
+  background-color: rgb(0, 218, 0);
+  border: none;
+  color: white;
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+}
+#addStudent {
+}
+#studentResult {
+  margin-top: 50px;
+}
+.item {
+  display: inline-block;
+  margin-top: 25px;
+  margin-left: 25px;
+}
+.html {
+  background-color: orange;
+}
+.css {
+  background-color: rgba(0, 119, 255, 0.937);
+}
+.js {
+  background-color: rgb(232, 255, 23);
+}
+input {
+  width: 180px;
+  border: none;
+  border-bottom: 1px solid gray;
+  outline: none;
+}
