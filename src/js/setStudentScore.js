@@ -2,25 +2,28 @@ import { showStudents } from "./showData";
 import { showEditScore } from "./showData";
 //create score class
 class Score {
-  constructor(Name, course, score, students) {
+  constructor(Name, course, score, students, nationalCode) {
     //check students is array or no
     if (Array.isArray(students)) {
       for (let index = 0; index < students.length; index++) {
         const student = students[index];
-        //check names 
-        if (`${student.firstName} ${student.lastName}` == Name) {
-          //check which one is course 
+        //check names
+        if (
+          `${student.firstName} ${student.lastName} (${student.nationalCode})` ==
+          Name
+        ) {
+          //check which one is course
           switch (course) {
             //placement score
-            case "js":
+            case "JS":
               student.rate.js = parseFloat(score);
               alert("course is add");
               break;
-            case "html":
+            case "HTML":
               student.rate.html = parseFloat(score);
               alert("course is add");
               break;
-            case "css":
+            case "CSS":
               alert("course is add");
               student.rate.css = parseFloat(score);
               break;
@@ -36,7 +39,8 @@ class Score {
               `${student.firstName} ${student.lastName}`,
               student.rate.html,
               student.rate.css,
-              student.rate.js
+              student.rate.js,
+              nationalCode
             );
             break;
           }
@@ -45,33 +49,37 @@ class Score {
     }
   }
 }
-//create edit score prototype 
-Score.prototype.editScore = (Name, course, score, students) => {
+//create edit score prototype
+Score.prototype.editScore = (Name, course, score, students, nationalCode) => {
   //check students is array or no
   if (Array.isArray(students)) {
     students.forEach((student) => {
       //check student names
-      if (`${student.firstName} ${student.lastName}` == Name) {
+      if (
+        `${student.firstName} ${student.lastName} (${student.nationalCode})` == Name
+      ) {
+        
         //check which courses is selected and placement thats
         switch (course) {
-          case "js":
+          case "JS":
             student.rate.js = parseFloat(score);
             break;
-          case "html":
+          case "HTML":
             student.rate.html = parseFloat(score);
             break;
-          case "css":
+          case "CSS":
             student.rate.css = parseFloat(score);
             break;
         }
 
         alert("course is edit");
-        //send data to showData file 
+        //send data to showData file
         showEditScore(
-          `${student.firstName} ${student.lastName}`,
+          `${student.firstName} ${student.lastName} (${student.nationalCode})`,
           student.rate.html,
           student.rate.css,
-          student.rate.js
+          student.rate.js,
+          nationalCode
         );
       }
     });

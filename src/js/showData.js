@@ -5,12 +5,26 @@ let studentResult = document.getElementById("studentResult");
 let select = document.getElementById("student");
 
 //get name and courses value and show thats 
-function showStudents(name, html, css, js) {
+function showStudents(name, html, css, js,nationalCode) {
   //check corses is none or has value
   if (html == "none" || css == "none" || js == "none") {
     return;
   }
+  let result = (html + css + js) / 3
+  if (result >= 18 && result <= 20) {
+    result = "great 👏"
+  }else if (result >= 15 && result <=18){
+    result = "vary good 👌"
+  }
+  else if (result >= 10 && result <=15){
+    result = "nice"
+  }else if (result >= 5 && result <= 10){
+    result = "bad"
+  }else{
+    result = ":/"
+  }
   //create item template with dom-generator library
+  studentResult.classList.add("studentResult")
   let template = domGenerator({
     tag: "div",
     attributes: { class: "item" },
@@ -22,7 +36,7 @@ function showStudents(name, html, css, js) {
       {
         tag: "span",
         attributes: { class: "studentName" },
-        properties: { textContent: `${name}` },
+        properties: { textContent: `${name} (${nationalCode})` },
       },
       {
         tag: "div",
@@ -72,6 +86,11 @@ function showStudents(name, html, css, js) {
           },
         ],
       },
+      {
+        tag : "p",
+        properties : {textContent : result},
+        attributes : {class : "detail"}
+      }
     ],
   });
   //add template to html
@@ -81,19 +100,19 @@ function showStudents(name, html, css, js) {
 function showLsData(data = []) {
   data.forEach((student) => {
     //show data value with create option and send that
-    select.innerHTML += `<option value="${student.firstName} ${student.lastName}">${student.firstName} ${student.lastName}</option>`;
+    select.innerHTML += `<option value="${student.firstName} ${student.lastName}">${student.firstName} ${student.lastName} (${student.nationalCode})</option>`;
     //create data tempelate
     showStudents(
       `${student.firstName} ${student.lastName}`,
       student.rate.html,
       student.rate.css,
-      student.rate.js
+      student.rate.js,student.nationalCode
     );
   });
 }
 
 //show edited score
-function showEditScore(name, html, css, js) {
+function showEditScore(name, html, css, js,nationalCode) {
   let item = document.getElementsByClassName("item");
 
   for (let index = 0; index < item.length; index++) {
