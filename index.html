@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>School</title>
+  <script type="module" crossorigin src="/school-project/assets/index-OWC5pTd5.js"></script>
+  <link rel="stylesheet" crossorigin href="/school-project/assets/index-sDqomWkR.css">
+</head>
+
+<body>
+  <div class="login-card">
+    <div class="column">
+      <h1>Add Student</h1>
+
+      <form>
+        <div class="form-item">
+          <input type="text" id="firstName" class="form-element" placeholder="First Name">
+        </div>
+        <div class="form-item">
+          <input type="text" id="lastName" class="form-element" placeholder="Last Name">
+        </div>
+        <div class="form-item">
+          <input type="number" id="national-code" class="form-element" placeholder="National Code">
+        </div>
+        <div class="flex">
+          <div>
+
+            <button id="add" type="button">  Add Student
+            </button>
+            <button type="button" id="clearStudents">Clear All Students</button>
+            <button type="button" id="deleteStudent">Delete any Student</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="column">
+      <h1>Set Score</h1>
+
+      <form>
+        <div style="margin-bottom:15px ;margin-top: -20px;">
+          <p id="error">error</p>
+          <div class="form-item">
+            <select name="" id="student">
+              <option value="">Choese Student</option>
+            </select>
+          </div>
+          <div class="form-item">
+            <select name="" id="course">
+              <option value="">Choese Course</option>
+              <option value="">HTML</option>
+              <option value="">CSS</option>
+              <option value="">JS</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-item">
+          <input type="number" id="score" class="form-element" placeholder="Student Score">
+        </div>
+        <div class="flex">
+          <button id="set" type="button">
+            Set Score
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div id="studentResult"></div>
+  <script src="src/js/silverBox.js"></script>
+</body>
+
+</html>
