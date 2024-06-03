@@ -4,6 +4,7 @@ import { setDataToLs } from "./setDataToLs";
 import { getDataToLs } from "./getDataFromLs";
 import { showLsData } from "./showData";
 import { showStudentDetails } from "./showStudentDetails";
+import { trashStudent } from "./deleteStudent";
 
 let students = [];
 getData();
@@ -35,6 +36,7 @@ function EventLestiner() {
   studentSelect.addEventListener("change", findStudentOption);
   courseSelect.addEventListener("change", findCourseOption);
   clearStudents.addEventListener("click", clearLs);
+  deleteStudent.addEventListener("click", validationDeleteStudent);
 }
 EventLestiner();
 
@@ -45,7 +47,14 @@ function validationAddStudent(e) {
     if (nationalCode.value.length == 10) {
       let isnational = validationNational();
       if (isnational == false) {
-        alert("Your code is duplicated");
+        silverBox({
+          alertIcon: "error",
+          text: "Your Natioanl Code is Duplicate.",
+          centerContent: true,
+          cancelButton: {
+            text: "OK",
+          },
+        });
       } else {
         //create new student
         let st = new Student(
@@ -58,12 +67,33 @@ function validationAddStudent(e) {
         students.push(st);
         //set studentsList data to Ls
         setDataToLs("studentsList", JSON.stringify(students));
-        // clearInputValue();
+        clearInputValue();
+        silverBox({
+          title: {
+            text: "Success",
+            alertIcon: "success",
+          },
+          text: "Student Is Add",
+        });
       }
     } else if (nationalCode.value.length > 10) {
-      alert("The digits of your code are greater than 10, try again");
+      silverBox({
+        alertIcon: "error",
+        text: "The Digits of Your Code are Greater Than 10, Try Again.",
+        centerContent: true,
+        cancelButton: {
+          text: "OK",
+        },
+      });
     } else if (nationalCode.value.length < 10) {
-      alert("The digits of your code are less than 10, try again");
+      silverBox({
+        alertIcon: "error",
+        text: "The Digits of Your Code are Less Than 10, Try Again.",
+        centerContent: true,
+        cancelButton: {
+          text: "OK",
+        },
+      });
     }
   }
 }
@@ -75,7 +105,14 @@ function validationSetScore() {
     selectOptionCourse !== ""
   ) {
     if (score.value > 20) {
-      alert("your score value is less than 100");
+      silverBox({
+        alertIcon: "error",
+        text: "Score Value Is Less Than 100.",
+        centerContent: true,
+        cancelButton: {
+          text: "OK",
+        },
+      });
     } else {
       //check studentsList is array or no
       if (Array.isArray(students)) {
@@ -110,6 +147,7 @@ function validationSetScore() {
                 nationalCode.value
               );
             }
+            error.style.visibility = "visible";
             error.innerText = showStudentDetails(selectOption, students);
           }
         });
@@ -119,7 +157,6 @@ function validationSetScore() {
     setDataToLs("studentsList", JSON.stringify(students));
     clearInputValue();
   } else {
-    console.log("object");
   }
 }
 
@@ -136,6 +173,7 @@ function findStudentOption(e) {
   let i = e.target.selectedIndex;
   selectOption = e.target.options[i].text;
   error.innerText = showStudentDetails(selectOption, students);
+  error.style.visibility = "visible";
 }
 
 //if course select(list) is change : find how option is selected
@@ -177,4 +215,58 @@ function confirmValidation() {
     return true;
   } //else
   return false;
+}
+function validationDeleteStudent(e) {
+  silverBox({
+    title: {
+      text: "Delete Student",
+    },
+    centerContent: true,
+    text: "Enter Student Information",
+    showCloseButton: true,
+    confirmButton: {
+      text: "Delete",
+      closeOnClick: true,
+      id: "deleteBtn",
+    },
+    cancelButton: {},
+    input: [
+      {
+        label: "FirstName",
+        type: "text",
+        placeHolder: "Enter First Name",
+        id: "deleteFirstName",
+      },
+      {
+        label: "Last Name",
+        type: "text",
+        placeHolder: "Enter Last Name",
+        id: "deleteLastName",
+      },
+      {
+        label: "National Code",
+        type: "number",
+        placeHolder: "Enter National Code",
+        id: "deleteNatioanl",
+      },
+    ],
+  });
+  let deleteNatioanl = document.getElementById("deleteNatioanl");
+  let deleteLastName = document.getElementById("deleteLastName");
+  let deleteFirstName = document.getElementById("deleteFirstName");
+  let deleteBtn = document.getElementById("deleteBtn");
+  let item = document.getElementsByClassName("item");
+  deleteBtn.addEventListener("click", () => {
+    trashStudent(
+      deleteFirstName.value,
+      deleteLastName.value,
+      deleteNatioanl.value,
+      students,
+      item,
+      studentSelect
+    );
+    setDataToLs("studentsList", JSON.stringify(students));
+    showLsData(students);
+    studentResult.classList.remove("studentResult");
+  });
 }

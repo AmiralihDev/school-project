@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>School</title>
   <link rel="stylesheet" href="src/css/style.css">
+  <link rel="stylesheet" href="src/css/silverBox.css">
 </head>
 
 <body>
@@ -29,7 +30,7 @@
             <button id="add" type="button">  Add Student
             </button>
             <button type="button" id="clearStudents">Clear All Students</button>
-            <button type="button" id="deleteStudent">delete any Student</button>
+            <button type="button" id="deleteStudent">Delete any Student</button>
           </div>
         </div>
       </form>
@@ -39,7 +40,7 @@
 
       <form>
         <div style="margin-bottom:15px ;margin-top: -20px;">
-          <p id="error"></p>
+          <p id="error">error</p>
           <div class="form-item">
             <select name="" id="student">
               <option value="">Choese Student</option>
@@ -66,31 +67,7 @@
     </div>
   </div>
   <div id="studentResult"></div>
-  <!-- <button id="clearStudents">clear all students</button>
-  <div id="container">
-    <section id="addStudent">
-      <input placeholder="first name" type="text" id="firstName">
-      <input placeholder="last name" type="text" id="lastName">
-      <button id="add">add student</button>
-    </section>
-    <section id="addScore">
-      <select id="student">
-        <option value="">set student</option>
-      </select>
-      <select id="course">
-        <option value="">set course</option>
-        <option value="">html</option>
-        <option value="">css</option>
-        <option value="">js</option>
-      </select>
-      <input placeholder="set score" id="score" type="number">
-      <button id="set">set</button>
-    </section>
-    <section id="studentResult">
-      <div id="class"></div>
-    </section>
-  </div>
--->
+  <script src="src/js/silverBox.js"></script>
   <script type="module" src="src/js/showData.js"></script>
   <script type="module" src="./src/js/script.js"></script>
 </body>

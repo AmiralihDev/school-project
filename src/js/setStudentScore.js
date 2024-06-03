@@ -17,15 +17,33 @@ class Score {
             //placement score
             case "JS":
               student.rate.js = parseFloat(score);
-              alert("course is add");
+              silverBox({
+                position: "top-left",
+                alertIcon: "info",
+                text: "Score Is Added!",
+                centerContent: true,
+                showCloseButton: true,
+              });
               break;
             case "HTML":
               student.rate.html = parseFloat(score);
-              alert("course is add");
+              silverBox({
+                position: "top-left",
+                alertIcon: "info",
+                text: "Score Is Added!",
+                centerContent: true,
+                showCloseButton: true,
+              });
               break;
             case "CSS":
-              alert("course is add");
               student.rate.css = parseFloat(score);
+              silverBox({
+                position: "top-left",
+                alertIcon: "info",
+                text: "Score Is Added!",
+                centerContent: true,
+                showCloseButton: true,
+              });
               break;
           }
           //check corses is has score or no
@@ -56,9 +74,9 @@ Score.prototype.editScore = (Name, course, score, students, nationalCode) => {
     students.forEach((student) => {
       //check student names
       if (
-        `${student.firstName} ${student.lastName} (${student.nationalCode})` == Name
+        `${student.firstName} ${student.lastName} (${student.nationalCode})` ==
+        Name
       ) {
-        
         //check which courses is selected and placement thats
         switch (course) {
           case "JS":
@@ -72,7 +90,13 @@ Score.prototype.editScore = (Name, course, score, students, nationalCode) => {
             break;
         }
 
-        alert("course is edit");
+        silverBox({
+          position: "top-left",
+          alertIcon: "info",
+          text: "Score Is Edited!",
+          centerContent: true,
+          showCloseButton: true
+   })
         //send data to showData file
         showEditScore(
           `${student.firstName} ${student.lastName} (${student.nationalCode})`,

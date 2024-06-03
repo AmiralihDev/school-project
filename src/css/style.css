@@ -1,15 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,600&display=swap");
 
-
 select {
   width: 100%;
   margin-bottom: 7px;
   height: 30px;
+  padding:7px ;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  border-bottom:2px solid gray ;
+  outline: none;
 }
-option{
+#error{
+  visibility: hidden;
+}
+option {
   font-size: 16px;
   height: 30px;
   width: 100%;
+  border-radius: 5px;
 }
 * {
   margin: 0;
@@ -30,25 +40,40 @@ body {
   background-color: white;
   border: 1px solid #ddd;
   box-shadow: 0 10px 50px -30px black;
-  width: 75%;
+  width: 80%;
   border-radius: 30px;
   margin-top: 70px;
 }
 .item {
+  border-radius: 5px;
   background-color: #eee;
   width: 29%;
+  padding: 10px;
   height: 150px;
-  font-size: 18px;
+  font-size: 16px;
   display: inline-block;
   margin-top: 25px;
   margin-left: 25px;
+  position: relative;
 }
 .item span {
   margin-left: 0px;
-  font-size: 17px;
+  font-size: 16px;
+  padding: 5px;
+  vertical-align: middle;
 }
 .item > span:first-child {
   margin-left: 5px;
+}
+.item div {
+  border-radius:5px ;
+  margin-top: 5px;
+  height: 25px;
+}
+.item p{
+  text-align: center;
+  bottom: 5px;
+  position: absolute;
 }
 .html {
   background-color: orange;
@@ -66,7 +91,7 @@ body {
   background-color: white;
   border: 1px solid #ddd;
   box-shadow: 0 10px 50px -30px black;
-  width: 75%;
+  width: 80%;
   border-radius: 30px;
   overflow: hidden;
   display: grid;
@@ -86,6 +111,7 @@ a {
   background-size: cover;
   position: relative;
   display: flex;
+  margin-right: 20px;
   justify-content: center;
   gap: 20px;
   flex-direction: column;

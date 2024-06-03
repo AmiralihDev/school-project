@@ -31,7 +31,7 @@ function showStudents(name, html, css, js,nationalCode) {
     children: [
       {
         tag: "span",
-        properties: { textContent: "studentName : " },
+        properties: { textContent: "Student Name : " },
       },
       {
         tag: "span",
@@ -48,7 +48,7 @@ function showStudents(name, html, css, js,nationalCode) {
             children: [
               {
                 tag: "span",
-                properties: { textContent: "html : " },
+                properties: { textContent: "HTML: " },
               },
               {
                 tag: "span",
@@ -62,7 +62,7 @@ function showStudents(name, html, css, js,nationalCode) {
             children: [
               {
                 tag: "span",
-                properties: { textContent: "css : " },
+                properties: { textContent: "CSS: " },
               },
               {
                 tag: "span",
@@ -76,7 +76,7 @@ function showStudents(name, html, css, js,nationalCode) {
             children: [
               {
                 tag: "span",
-                properties: { textContent: "js : " },
+                properties: { textContent: "JS: " },
               },
               {
                 tag: "span",
