@@ -27,6 +27,16 @@ function trashStudent(firstName, lastName, national, students, item, select) {
           }
         }
         students.splice(index, 1);
+        return true
+      }else{
+        silverBox({
+          alertIcon: "error",
+          text: "There are no student.",
+          centerContent: true,
+          cancelButton: {
+            text: "OK",
+          },
+        });
       }
     }
   }

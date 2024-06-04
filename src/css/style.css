@@ -44,6 +44,17 @@ body {
   border-radius: 30px;
   margin-top: 70px;
 }
+#deleteBtn{
+  background-color: white;
+  border: none;
+  border: 2px solid #0037ff;
+  color: black;
+}
+#deleteBtn:hover{
+  transition:all 0.3s;
+  background-color: #0037ff;
+  color: white;
+}
 .item {
   border-radius: 5px;
   background-color: #eee;

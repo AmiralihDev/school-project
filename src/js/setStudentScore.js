@@ -18,7 +18,7 @@ class Score {
             case "JS":
               student.rate.js = parseFloat(score);
               silverBox({
-                position: "top-left",
+                position: "top-right",
                 alertIcon: "info",
                 text: "Score Is Added!",
                 centerContent: true,
@@ -28,7 +28,7 @@ class Score {
             case "HTML":
               student.rate.html = parseFloat(score);
               silverBox({
-                position: "top-left",
+                position: "top-right",
                 alertIcon: "info",
                 text: "Score Is Added!",
                 centerContent: true,
@@ -38,7 +38,7 @@ class Score {
             case "CSS":
               student.rate.css = parseFloat(score);
               silverBox({
-                position: "top-left",
+                position: "top-right",
                 alertIcon: "info",
                 text: "Score Is Added!",
                 centerContent: true,
@@ -91,7 +91,7 @@ Score.prototype.editScore = (Name, course, score, students, nationalCode) => {
         }
 
         silverBox({
-          position: "top-left",
+          position: "top-right",
           alertIcon: "info",
           text: "Score Is Edited!",
           centerContent: true,
