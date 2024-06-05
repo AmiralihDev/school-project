@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>School</title>
-  <script type="module" crossorigin src="/school-project/assets/index-C_D5RDSy.js"></script>
-  <link rel="stylesheet" crossorigin href="/school-project/assets/index-JMfRmRPy.css">
+  <script type="module" crossorigin src="/school-project/assets/index-VbAcPTcF.js"></script>
+  <link rel="stylesheet" crossorigin href="/school-project/assets/index-DnaGe-Te.css">
 </head>
 
 <body>
@@ -65,8 +65,40 @@
         </div>
       </form>
     </div>
+    
+  </div>
+  <div id="responsive" class="column">
+    <h1>Set Score</h1>
+
+    <form>
+      <div style="margin-bottom:15px ;margin-top: -20px;">
+        <p id="error">error</p>
+        <div class="form-item">
+          <select name="" id="student">
+            <option value="">Choese Student</option>
+          </select>
+        </div>
+        <div class="form-item">
+          <select name="" id="course">
+            <option value="">Choese Course</option>
+            <option value="">HTML</option>
+            <option value="">CSS</option>
+            <option value="">JS</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-item">
+        <input type="number" id="score" class="form-element" placeholder="Student Score">
+      </div>
+      <div class="flex">
+        <button id="set" type="button">
+          Set Score
+        </button>
+      </div>
+    </form>
   </div>
   <div id="studentResult"></div>
+
 </body>
 
 </html>
