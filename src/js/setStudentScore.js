@@ -63,7 +63,7 @@ class Score {
               student.rate.html,
               student.rate.css,
               student.rate.js,
-              nationalCode
+              student.nationalCode
             );
             break;
           }
