@@ -11,6 +11,7 @@ let students = [];
 getData();
 
 //Selector
+let loginCard = document.querySelector(".login-card")
 let error = document.getElementById("error");
 let deleteStudent = document.getElementById("deleteStudent");
 let clearStudents = document.getElementById("clearStudents");
@@ -25,11 +26,23 @@ let studentResult = document.getElementById("studentResult");
 let nationalCode = document.getElementById("national-code");
 let loginCardInput = document.querySelectorAll(".login-card input");
 //varables
-
 //student option
 let selectOption = "";
 //course option
 let selectOptionCourse = "";
+
+window.onload = () => {
+  let column = document.querySelector(".column:nth-child(2)");
+  let cl2 = column
+  if (document.body.offsetWidth < 400) {
+    
+    // column.remove();
+  }else{
+
+  }
+
+};
+
 // EventLestiners
 function EventLestiner() {
   addStudentBtn.addEventListener("click", validationAddStudent);
@@ -185,35 +198,33 @@ function findCourseOption(e) {
 function clearLs(e) {
   //show alert ta continue
   //remove studentsList from Ls
-  
+
   if (e == true) {
     clearInputValue();
     localStorage.removeItem("studentsList");
     //refresh page
-    let item = document.getElementsByClassName("item")
+    let item = document.getElementsByClassName("item");
     for (let index = 0; index < item.length; index++) {
       const element = item[index];
-      element.remove()
+      element.remove();
     }
-    studentResult.classList.remove("studentResult")
+    studentResult.classList.remove("studentResult");
     for (let i = 0; i < studentSelect.children.length; i++) {
       const children = studentSelect.children[i];
       if (children == studentSelect.children[0]) {
-        
-      }else{
-
-        children.remove()
+      } else {
+        children.remove();
       }
     }
-    students = []
+    students = [];
     silverBox({
       position: "top-right",
       alertIcon: "info",
       text: "All Student is Deleted!",
       centerContent: true,
-      showCloseButton: true
-    })
-  }else{
+      showCloseButton: true,
+    });
+  } else {
     confirmValidation(
       "Delete",
       "Are You Sure To Delete All Students",
@@ -352,8 +363,8 @@ function validationDeleteStudent(e) {
         },
       });
     } else {
-      let validation = validationNational();
-      if (validation != false) {
+      let validation = validationNational(deleteNatioanl);
+      if (validation == false) {
         let trash = trashStudent(
           deleteFirstName.value,
           deleteLastName.value,
@@ -369,6 +380,7 @@ function validationDeleteStudent(e) {
             text: "Student is Deleted!",
             centerContent: true,
             showCloseButton: true,
+            timer: { duration: "3000ms", pauseOnHover: false },
           });
         }
         setDataToLs("studentsList", JSON.stringify(students));

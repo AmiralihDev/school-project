@@ -7,6 +7,7 @@
   <title>School</title>
   <link rel="stylesheet" href="src/css/style.css">
   <link rel="stylesheet" href="src/css/silverBox.css">
+  <link rel="stylesheet" href="src/css/responsiv.css">
 </head>
 
 <body>
@@ -65,8 +66,40 @@
         </div>
       </form>
     </div>
+    
+  </div>
+  <div id="responsive" class="column">
+    <h1>Set Score</h1>
+
+    <form>
+      <div style="margin-bottom:15px ;margin-top: -20px;">
+        <p id="error">error</p>
+        <div class="form-item">
+          <select name="" id="student">
+            <option value="">Choese Student</option>
+          </select>
+        </div>
+        <div class="form-item">
+          <select name="" id="course">
+            <option value="">Choese Course</option>
+            <option value="">HTML</option>
+            <option value="">CSS</option>
+            <option value="">JS</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-item">
+        <input type="number" id="score" class="form-element" placeholder="Student Score">
+      </div>
+      <div class="flex">
+        <button id="set" type="button">
+          Set Score
+        </button>
+      </div>
+    </form>
   </div>
   <div id="studentResult"></div>
+
   <script type="module" src="src/js/showData.js"></script>
   <script type="module" src="./src/js/script.js"></script>
 </body>
