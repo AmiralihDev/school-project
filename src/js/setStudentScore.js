@@ -23,10 +23,11 @@ class Score {
                 alertIcon: "info",
                 text: "Score Is Added!",
                 centerContent: true,
+                timer : {duration :'3000ms',pauseOnHover : false},
                 showCloseButton: true,
                 
               });
-              break;timer : {duration :'3000ms',pauseOnHover : false}
+              break
             case "HTML":
               student.rate.html = parseFloat(score);
               silverBox({
