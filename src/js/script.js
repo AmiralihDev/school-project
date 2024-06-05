@@ -46,7 +46,7 @@ function validationAddStudent(e) {
   e.preventDefault();
   if (firstName.value.length > 0 && lastName.value.length > 0) {
     if (nationalCode.value.length == 10) {
-      let isnational = validationNational();
+      let isnational = validationNational(nationalCode);
       if (isnational == false) {
         silverBox({
           alertIcon: "error",
