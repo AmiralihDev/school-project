@@ -1,3 +1,4 @@
+import { silverBox } from "./silverBox";
 function trashStudent(firstName, lastName, national, students, item, select) {
   if (Array.isArray(students)) {
     for (let index = 0; index < students.length; index++) {

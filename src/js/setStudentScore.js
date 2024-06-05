@@ -1,5 +1,6 @@
 import { showStudents } from "./showData";
 import { showEditScore } from "./showData";
+import { silverBox } from "./silverBox";
 //create score class
 class Score {
   constructor(Name, course, score, students, nationalCode) {
@@ -23,8 +24,9 @@ class Score {
                 text: "Score Is Added!",
                 centerContent: true,
                 showCloseButton: true,
+                
               });
-              break;
+              break;timer : {duration :'3000ms',pauseOnHover : false}
             case "HTML":
               student.rate.html = parseFloat(score);
               silverBox({
@@ -33,6 +35,7 @@ class Score {
                 text: "Score Is Added!",
                 centerContent: true,
                 showCloseButton: true,
+                timer : {duration :'3000ms',pauseOnHover : false}
               });
               break;
             case "CSS":
@@ -43,6 +46,7 @@ class Score {
                 text: "Score Is Added!",
                 centerContent: true,
                 showCloseButton: true,
+                timer : {duration :'3000ms',pauseOnHover : false}
               });
               break;
           }
@@ -95,7 +99,8 @@ Score.prototype.editScore = (Name, course, score, students, nationalCode) => {
           alertIcon: "info",
           text: "Score Is Edited!",
           centerContent: true,
-          showCloseButton: true
+          showCloseButton: true,
+          timer : {duration :'3000ms',pauseOnHover : false}
    })
         //send data to showData file
         showEditScore(

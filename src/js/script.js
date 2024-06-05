@@ -5,7 +5,7 @@ import { getDataToLs } from "./getDataFromLs";
 import { showLsData } from "./showData";
 import { showStudentDetails } from "./showStudentDetails";
 import { trashStudent } from "./deleteStudent";
-import silverBox from "./silverBox";
+import { silverBox } from "./silverBox";
 
 let students = [];
 getData();
