@@ -18,8 +18,8 @@ function trashStudent(firstName, lastName, national, students, item, select) {
             elemment.remove();
           }
         }
-        for (let f = 0; f < select[0].children.length; f++) {
-          const option = select[0].children[f];
+        for (let f = 0; f < select.children.length; f++) {
+          const option = select.children[f];
           if (
             `${student.firstName} ${student.lastName} (${student.nationalCode})` ==
             option.innerText
