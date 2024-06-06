@@ -6,12 +6,13 @@ import { showLsData } from "./showData";
 import { showStudentDetails } from "./showStudentDetails";
 import { trashStudent } from "./deleteStudent";
 import { silverBox } from "./silverBox";
+import domGenerator from "dom-generator";
 
 let students = [];
 getData();
 
 //Selector
-let loginCard = document.querySelector(".login-card")
+let loginCard = document.querySelector(".login-card");
 let error = document.getElementById("error");
 let deleteStudent = document.getElementById("deleteStudent");
 let clearStudents = document.getElementById("clearStudents");
@@ -30,17 +31,15 @@ let loginCardInput = document.querySelectorAll(".login-card input");
 let selectOption = "";
 //course option
 let selectOptionCourse = "";
+let selectNationalDeleter = "";
 
 window.onload = () => {
   let column = document.querySelector(".column:nth-child(2)");
-  let cl2 = column
+  let cl2 = column;
   if (document.body.offsetWidth < 400) {
-    
     // column.remove();
-  }else{
-
+  } else {
   }
-
 };
 
 // EventLestiners
@@ -59,7 +58,7 @@ function validationAddStudent(e) {
   e.preventDefault();
   if (firstName.value.length > 0 && lastName.value.length > 0) {
     if (nationalCode.value.length == 10) {
-      let isnational = validationNational(nationalCode);
+      let isnational = validationNational(nationalCode.value);
       if (isnational == false) {
         silverBox({
           alertIcon: "error",
@@ -177,7 +176,7 @@ function validationSetScore() {
 function validationNational(national) {
   for (let index = 0; index < students.length; index++) {
     const student = students[index];
-    if (student.nationalCode == national.value) {
+    if (student.nationalCode == national) {
       return false;
     }
   }
@@ -194,6 +193,10 @@ function findStudentOption(e) {
 function findCourseOption(e) {
   let i = e.target.selectedIndex;
   selectOptionCourse = e.target.options[i].text;
+}
+function findNationalCode(e) {
+  let i = e.target.selectedIndex;
+  selectNationalDeleter = e.target.options[i].text;
 }
 function clearLs(e) {
   //show alert ta continue
@@ -223,6 +226,10 @@ function clearLs(e) {
       text: "All Student is Deleted!",
       centerContent: true,
       showCloseButton: true,
+      timer : {
+        duration : '3000ms',
+        pauseOnHover : false
+      }
     });
   } else {
     confirmValidation(
@@ -304,6 +311,15 @@ function validationDeleteStudent(e) {
     });
     return;
   }
+  let selectDeleter = document.createElement("select")
+  selectDeleter.id = "deleteNational"
+  let optionDeleter = document.createElement("option")
+  optionDeleter.innerText = "Choese National Code"
+  selectDeleter.append(optionDeleter)
+
+
+
+  nationalCreateor(selectDeleter);
   silverBox({
     title: {
       text: "Delete Student",
@@ -317,86 +333,37 @@ function validationDeleteStudent(e) {
       id: "deleteBtn",
     },
     cancelButton: {},
-    input: [
-      {
-        label: "FirstName",
-        type: "text",
-        placeHolder: "Enter First Name",
-        id: "deleteFirstName",
-      },
-      {
-        label: "Last Name",
-        type: "text",
-        placeHolder: "Enter Last Name",
-        id: "deleteLastName",
-      },
-      {
-        label: "National Code",
-        type: "number",
-        placeHolder: "Enter National Code",
-        id: "deleteNatioanl",
-      },
-    ],
+    html: selectDeleter,
   });
-  let deleteNatioanl = document.getElementById("deleteNatioanl");
-  let deleteLastName = document.getElementById("deleteLastName");
-  let deleteFirstName = document.getElementById("deleteFirstName");
+  let deleteNatioanl = document.getElementById("deleteNational");
   let deleteBtn = document.getElementById("deleteBtn");
   let item = document.getElementsByClassName("item");
+  deleteNatioanl.addEventListener("change", findNationalCode);
   deleteBtn.addEventListener("click", () => {
-    if (deleteNatioanl.value.length > 10) {
+    // let validation = validationNational(selectNationalDeleter);
+    let trash = trashStudent(selectNationalDeleter, students, item, studentSelect);
+    if (trash == true) {
       silverBox({
-        alertIcon: "error",
-        text: "The Digits of Your Code are Less Than 10, Try Again.",
+        position: "top-right",
+        alertIcon: "info",
+        text: "Student is Deleted!",
         centerContent: true,
-        cancelButton: {
-          text: "OK",
-        },
+        showCloseButton: true,
+        timer: { duration: "3000ms", pauseOnHover: false },
       });
-    } else if (deleteNatioanl.value.length < 10) {
-      silverBox({
-        alertIcon: "error",
-        text: "The Digits of Your Code are Greater Than 10, Try Again.",
-        centerContent: true,
-        cancelButton: {
-          text: "OK",
-        },
-      });
-    } else {
-      let validation = validationNational(deleteNatioanl);
-      if (validation == false) {
-        let trash = trashStudent(
-          deleteFirstName.value,
-          deleteLastName.value,
-          deleteNatioanl.value,
-          students,
-          item,
-          studentSelect
-        );
-        if (trash == true) {
-          silverBox({
-            position: "top-right",
-            alertIcon: "info",
-            text: "Student is Deleted!",
-            centerContent: true,
-            showCloseButton: true,
-            timer: { duration: "3000ms", pauseOnHover: false },
-          });
-        }
-        setDataToLs("studentsList", JSON.stringify(students));
-        if (item.length == 0) {
-          studentResult.classList.remove("studentResult");
-        }
-      } else {
-        silverBox({
-          alertIcon: "error",
-          text: "Your Natioanl Code is Duplicate.",
-          centerContent: true,
-          cancelButton: {
-            text: "OK",
-          },
-        });
-      }
+    }
+    setDataToLs("studentsList", JSON.stringify(students));
+    if (item.length == 0) {
+      studentResult.classList.remove("studentResult");
     }
   });
+}
+
+function nationalCreateor(select) {
+  for (let index = 0; index < students.length; index++) {
+    const student = students[index];
+    let option = document.createElement("option")
+    option.innerText = `${student.firstName} ${student.lastName} (${student.nationalCode})`
+    select.append(option)
+  }
 }

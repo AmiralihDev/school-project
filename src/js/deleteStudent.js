@@ -1,12 +1,10 @@
 import { silverBox } from "./silverBox";
-function trashStudent(firstName, lastName, national, students, item, select) {
+function trashStudent(national, students, item, select) {
   if (Array.isArray(students)) {
     for (let index = 0; index < students.length; index++) {
       const student = students[index];
       if (
-        student.firstName == firstName &&
-        student.lastName == lastName &&
-        student.nationalCode == national
+        `${student.firstName} ${student.lastName} (${student.nationalCode})` == national
       ) {
         for (let i = 0; i < item.length; i++) {
           const elemment = item[i];
