@@ -314,7 +314,7 @@ function validationDeleteStudent(e) {
   let selectDeleter = document.createElement("select")
   selectDeleter.id = "deleteNational"
   let optionDeleter = document.createElement("option")
-  optionDeleter.innerText = "Choese National Code"
+  optionDeleter.innerText = "Choese Student"
   selectDeleter.append(optionDeleter)
 
 
